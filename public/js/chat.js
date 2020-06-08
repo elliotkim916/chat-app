@@ -19,10 +19,10 @@ const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
 
 const autoscroll = () => {
-  // get new message element
+  // new message element
   const $newMessage = $messages.lastElementChild;
 
-  // get height of the new message
+  // height of the new message
   const newMessageStyles = getComputedStyle($newMessage);
   const newMessageMargin = parseInt(newMessageStyles.marginBottom);
   const newMessageHeight = $newMessage.offsetHeight + newMessageMargin;
@@ -34,13 +34,11 @@ const autoscroll = () => {
   const containerHeight = $messages.scrollHeight;
 
   // how far have I scrolled?
-  // scrollTop - amount of distance we scrolled from the top of scrollbar
   const scrollOffset = $messages.scrollTop + visibleHeight;
 
   // checking to see if we were at the bottom before the last message was added
   if (containerHeight - newMessageHeight <= scrollOffset) {
     $messages.scrollTop = $messages.scrollHeight; // this will push us to the bottom
-    // scrollheight is the min height the element would require in order to fil all the content in the viewport without using a vertical scrollbar
   }
 };
 
@@ -116,4 +114,3 @@ socket.emit('join', { username, room }, (error) => {
     location.href = '/';
   }
 });
-// The join event is emitted when the chat.js file is loaded and parsed so right when we switch to the chat.html page.

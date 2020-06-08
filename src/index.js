@@ -12,17 +12,13 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users'
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-// socketio expects it to be called with the raw http server
-// when express creates it behind the scenes, we dont have access to it to pass it in, thats why we needed to refactor
 
 const port = process.env.PORT || 3000;
 const publicDirectoryPath = path.join(__dirname, '../public');
 
 app.use(express.static(publicDirectoryPath));
 
-// this functions run for each new connection
 io.on('connection', (socket) => {
-  // socket is an obj, contains info about the connection
   console.log('New WebSocket connection!');
 
   socket.on('join', ({ username, room }, callback) => {

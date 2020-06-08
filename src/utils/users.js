@@ -35,10 +35,8 @@ const addUser = ({ id, username, room }) => {
 const removeUser = (id) => {
   const index = users.findIndex(user => user.id === id);
 
-  // index is -1 if didnt find match, 0 or greater if match found
   if (index !== -1) {
     return users.splice(index, 1)[0];
-    // returns array of deleted items, also removes user from users array
   }
 };
 
