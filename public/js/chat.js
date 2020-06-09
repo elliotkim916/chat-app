@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 'use strict';
 
 const socket = io();
@@ -43,7 +42,6 @@ const autoscroll = () => {
 };
 
 socket.on('message', ({ username, text, createdAt }) => {
-  console.log(text);
   const html = Mustache.render(messageTemplate, {
     username,
     message: text,
@@ -54,7 +52,6 @@ socket.on('message', ({ username, text, createdAt }) => {
 });
 
 socket.on('locationMessage', ({ username, locationURL, createdAt }) => {
-  console.log(locationURL);
   const html = Mustache.render(locationTemplate, {
     username,
     locationURL,
@@ -103,7 +100,6 @@ $sendLocationButton.addEventListener('click', () => {
 
     socket.emit('sendLocation', location, () => {
       $sendLocationButton.removeAttribute('disabled');
-      console.log('Location shared!');
     });
   });
 });
