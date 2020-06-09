@@ -15,9 +15,15 @@ socket.on('landed', (users) => {
   $activeRoomsLabel.style.display = 'none';
   $activeRoomOptions.style.display = 'none';
   
+  let rooms = users.map(user => user.room);
+  let filteredRooms = rooms.filter((room, index) => rooms.indexOf(room) === index);
+  rooms = filteredRooms.map(room => {
+    return { room };
+  });
+
   if (users.length > 0) {
     html = Mustache.render(roomsTemplate, {
-      users
+      rooms
     });
 
     $activeRoomsLabel.style.display = 'block';

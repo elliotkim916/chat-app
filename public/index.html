@@ -25,10 +25,10 @@
     <script id="rooms-template" type="text/html">
       <div>
         <option value="" selected disabled hidden>---</option>
-        {{#users}}
-          <option value="Reset">Create new room</option>
+        <option value="Reset">Create new room</option>
+        {{#rooms}}
           <option value={{room}}>{{room}}</option>
-        {{/users}}
+        {{/rooms}}
       </div>
     </script>
 
