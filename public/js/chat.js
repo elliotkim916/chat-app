@@ -67,6 +67,7 @@ socket.on('locationMessage', ({ username, locationURL, createdAt }) => {
 });
 
 socket.on('roomData', ({ room, users }) => {
+  console.log(users);
   const html = Mustache.render(sidebarTemplate, {
     room,
     users
